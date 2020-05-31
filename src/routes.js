@@ -17,7 +17,7 @@ const { LoginValidationRules } = require('./validations/LoginValidation');
 routes
     //Pessoa
   .get('/pessoa', PessoaController.index)
-  .post('/pessoa', PessoaValidationRules(), validate, auth, PessoaController.create)
+  .post('/pessoa', PessoaValidationRules(), validate, PessoaController.create)
   .put('/pessoa/:id', PessoaValidationRules(), validate, auth, PessoaController.edit)
     //Login
   .post('/login', LoginValidationRules(), validate, loginController.login)
