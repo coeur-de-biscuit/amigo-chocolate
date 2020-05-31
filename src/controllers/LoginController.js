@@ -20,7 +20,8 @@ module.exports = {
         //Dando um token para o User
         const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET, { expiresIn: 300});
         
-        return res.send({auth: true, token: token})
+        
+        return res.send({ user: user, auth: true, token: token});
         
         //res.header('auth-token', token).send(token);
 
