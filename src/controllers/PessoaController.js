@@ -19,7 +19,7 @@ module.exports = {
     async create(req, res) {
         try {
 
-            let { nome, sobrenome, apelido, email, dataNascimento, senha, createdAt } = req.body;
+            let { nome, sobrenome, apelido, email, senha, createdAt } = req.body;
 
             const salt = await bcrypt.genSalt(10);
             const hashedPassword = await bcrypt.hash(senha, salt);
@@ -29,7 +29,6 @@ module.exports = {
                 sobrenome,
                 apelido,
                 email,
-                dataNascimento,
                 senha : hashedPassword,
                 createdAt
             });

@@ -21,9 +21,6 @@ const PessoaSchema = new mongoose.Schema({
         index: true,
         unique: true
     },
-    dataNascimento: {
-        type: Date
-    },
     senha: {
         type: String,
         required: true,
