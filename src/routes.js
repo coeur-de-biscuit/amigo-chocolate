@@ -13,6 +13,7 @@ const LoginController = require('./controllers/LoginController');
 const { validate } = require('./middleware/validator');
 const { PessoaValidationRules } = require('./validations/PessoaValidation');
 const { LoginValidationRules } = require('./validations/LoginValidation');
+const { GrupoValidationRules } = require('./validations/GrupoValidation');
 
 //ROTES
 routes
@@ -22,9 +23,9 @@ routes
   .put('/pessoa/:id', PessoaValidationRules(), validate, PessoaController.edit)
     //Grupos
   .get('/grupo', GrupoController.index)
-  .post('/grupo', auth, validate, GrupoController.create)
-  .post('/grupo/add/:_idGrupo/:nick', GrupoController.addNewMember)
-  .post('/grupo/remove/:_idGrupo/:nick', GrupoController.removeMember)
+  .post('/grupo', GrupoValidationRules(),auth, validate, GrupoController.create)
+  .post('/grupo/add/:_idGrupo/:nick', auth, GrupoController.addNewMember)
+  .post('/grupo/remove/:_idGrupo/:nick', auth, GrupoController.removeMember)
     //Login
   .post('/login', LoginValidationRules(), validate, LoginController.login)
 
