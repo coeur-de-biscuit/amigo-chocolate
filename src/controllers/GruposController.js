@@ -27,9 +27,9 @@ module.exports = {
 
             const retornoGrupo = await Grupo.create({
                 nome,
-                apelido_admin,
                 valorMinimo,
                 valorMaximo,
+                apelido_admin,
                 createdAt
             });
 
