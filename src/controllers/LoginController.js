@@ -18,7 +18,7 @@ module.exports = {
             return res.status(400).send({ error: "Senha Invalida" })
 
         //Dando um token para o User
-        const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET, { expiresIn: 3000});
+        const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET, { expiresIn: 86400});
         
         
         return res.send({ user: user, auth: true, token: token});
