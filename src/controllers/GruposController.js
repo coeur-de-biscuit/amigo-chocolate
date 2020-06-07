@@ -5,8 +5,7 @@ module.exports = {
     async index(request, response) {
         try{
 
-            const {page = 1} = request.query;
-            const grupo = await Grupo.paginate({}, {page, limit : 5});
+            const grupo = await Grupo.find();
             
             return response.send({ grupo });
 
