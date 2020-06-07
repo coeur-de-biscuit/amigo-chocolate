@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const Pessoa = require('../models/Pessoa');
 
 module.exports = async(req, res, next) => {
-    const token = req.header('auth-token').replace('Bearer ', '');
+    const token = req.header('Authorization').replace('Bearer ', '');
     const data = jwt.verify(token, process.env.TOKEN_SECRET);
     try {
         const user = await Pessoa.findOne({ _id: data._id });

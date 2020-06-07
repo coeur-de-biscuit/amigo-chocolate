@@ -22,7 +22,7 @@ routes
   .post('/pessoa', PessoaValidationRules(), validate, PessoaController.create)
   .put('/pessoa/:id', PessoaValidationRules(), validate, PessoaController.edit)
     //Grupos
-  .get('/grupo', GrupoController.index)
+  .get('/grupo', auth, GrupoController.index)
   .post('/grupo', GrupoValidationRules(),auth, validate, GrupoController.create)
   .post('/grupo/add/:_idGrupo/:nick', auth, GrupoController.addNewMember)
   .post('/grupo/remove/:_idGrupo/:nick', auth, GrupoController.removeMember)
