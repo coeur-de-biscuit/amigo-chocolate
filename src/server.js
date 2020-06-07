@@ -18,7 +18,7 @@ mongoose.connect(process.env.DB_CONNECTION,
 )
 
 app.use(cors(
-    origin: 'https://backend-amigo-chocolate.herokuapp.com/'
+    {origin: 'https://backend-amigo-chocolate.herokuapp.com/'}
 ));
 app.use(express.json());
 app.use(routes);
