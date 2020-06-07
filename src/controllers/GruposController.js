@@ -34,7 +34,7 @@ module.exports = {
                 createdAt
             });
 
-            return res.send({ retornoGrupo });
+            return res.json({ retornoGrupo });
 
         } catch (err) {
             return res.status(400).send(err);
