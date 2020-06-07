@@ -17,7 +17,9 @@ mongoose.connect(process.env.DB_CONNECTION,
     () => console.log('Conectou meu consagrado')
 )
 
-app.use(cors());
+app.use(cors(
+    origin: 'https://backend-amigo-chocolate.herokuapp.com/'
+));
 app.use(express.json());
 app.use(routes);
 
