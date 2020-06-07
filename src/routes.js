@@ -24,6 +24,7 @@ routes
     //Grupos
   .get('/grupo', auth, GrupoController.index)
   .post('/grupo', GrupoValidationRules(),auth, validate, GrupoController.create)
+  .delete('/grupo/:_id', auth, GrupoController.deleteGroup)
   .post('/grupo/add/:_idGrupo/:nick', auth, GrupoController.addNewMember)
   .post('/grupo/remove/:_idGrupo/:nick', auth, GrupoController.removeMember)
     //Login

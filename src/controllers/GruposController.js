@@ -40,6 +40,22 @@ module.exports = {
         }
     },
 
+    async deleteGroup(request, response) {
+        let { _id } = request.params;
+
+        Grupo.findByIdAndDelete(_id, async(err, res) => {
+            if(err) {
+                return response.status(400).json({ Error: "ID não encontrado" })
+            }
+
+            if(!res) {
+                return response.status(404).json({});
+            }
+
+            response.send();
+        })
+    },
+
     async addNewMember(request, response) {
         let { _idGrupo, nick } = request.params;
 
