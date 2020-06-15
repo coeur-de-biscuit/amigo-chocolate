@@ -39,7 +39,7 @@ module.exports = {
             const hashedPassword = await bcrypt.hash(senha, salt);
 
             const retornoPessoa = await Pessoa.create({
-                imagem: `http://192.168.100.150:3333/uploads/Default-Profile-Female.jpg`,
+                imagem: `https://backend-amigo-chocolate.herokuapp.com/uploads/Default-Profile-Female.jpg`,
                 nome,
                 sobrenome,
                 apelido,
@@ -74,7 +74,7 @@ module.exports = {
              
             let { id } = req.params;
 
-            const retornoPessoa = await Pessoa.findByIdAndUpdate(id, {imagem: `http://192.168.100.150:3333/uploads/${req.file.filename}`}, {new: true});
+            const retornoPessoa = await Pessoa.findByIdAndUpdate(id, {imagem: `https://backend-amigo-chocolate.herokuapp.com/uploads/${req.file.filename}`}, {new: true});
 
             return res.send({ retornoPessoa });  
  
