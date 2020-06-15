@@ -22,7 +22,8 @@ const GrupoSchema = new mongoose.Schema({
         sobrenome: String,
         apelido: String,
         email: String,
-        listaDesejos: [String],
+        listaDesejos: String,
+        imagem: String
       }],
     createdAt: {
         type: Date,

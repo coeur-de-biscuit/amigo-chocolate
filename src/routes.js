@@ -1,4 +1,7 @@
 const express = require('express');
+const multer = require('multer');
+const multerConfig = require('./config/multer');
+
 const routes = express.Router();
 
 //JWT TOKEN
@@ -19,8 +22,11 @@ const { GrupoValidationRules } = require('./validations/GrupoValidation');
 routes
     //Pessoa
   .get('/pessoa', PessoaController.index)
-  .post('/pessoa', PessoaValidationRules(), validate, PessoaController.create)
-  .put('/pessoa/:id', PessoaValidationRules(), validate, PessoaController.edit)
+  .get('/pessoa/:id', PessoaController.show)
+  .get('/pessoa/:id', PessoaController.addDesejos)
+  .post('/pessoa', multer(multerConfig).single(`imagem`) ,PessoaValidationRules(), validate, PessoaController.create)
+  .put('/pessoa/:id', auth,PessoaValidationRules(), PessoaController.edit)
+  .put('/pessoa/change/:id', multer(multerConfig).single(`imagem`), PessoaValidationRules(), PessoaController.addProfImage)
     //Grupos
   .get('/grupo', auth, GrupoController.index)
   .post('/grupo', GrupoValidationRules(), auth, validate, GrupoController.create)

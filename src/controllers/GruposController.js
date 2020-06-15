@@ -6,8 +6,9 @@ module.exports = {
         try{
 
             const grupo = await Grupo.find();
+
             
-            return response.send({ grupo });
+            return response.send(grupo);
 
         } catch {
             return response.status(400).send({error: 'Erro ao listar grupos'})
@@ -78,6 +79,8 @@ module.exports = {
                     return response.status(404).json({ Error: "Grupo não encontrado" })
                 }
 
+                await Pessoa.findOneAndUpdate({ apelido: nick }, { "$push": { "grupos": res } })
+
                 return response.send(res);
             })
         } else {
@@ -109,6 +112,8 @@ module.exports = {
             if (err) {
                 return response.status(500).json({Error: "Erro!"})
             }
+
+            await Pessoa.findOneAndUpdate({ apelido: nick }, { "$pull": { "grupos": { "_id": _idGrupo } } }, { new: true })
 
             return response.send(res);
             

@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate');
 
 const PessoaSchema = new mongoose.Schema({
+    imagem:{
+        type: String
+    },
     nome: {
         type: String,
         required: true
@@ -27,6 +30,13 @@ const PessoaSchema = new mongoose.Schema({
         select: false,
         min: 6,
         max: 1024
+    },
+    grupos: {
+        _id: String,
+        nome: String
+    },
+    listaDesejos: {
+        type: String,
     },
     createdAt: {
         type: Date,
